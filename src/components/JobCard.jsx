@@ -1,11 +1,13 @@
-const JobCard = () => {
+const JobCard = ({ job }) => {
   return (
     <div className="card">
       <div className="logo" />
       <div className="info">
-        <h3>AI Product Engineer</h3>
-        <p>Google - £55000</p>
-        <p>London</p>
+        <h3>{job.title}</h3>
+        <p>
+          {job.company} - £{job.salary}
+        </p>
+        <p>{job.location}</p>
       </div>
     </div>
   );
