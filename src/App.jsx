@@ -9,6 +9,7 @@ const jobs = [
     title: "AI Product Engineer",
     salary: 55000,
     applied: false,
+    location: "London",
   },
   {
     id: 2,
@@ -16,12 +17,14 @@ const jobs = [
     title: "Data Analyst",
     salary: 59000,
     applied: true,
+    location: "London",
   },
   {
     id: 3,
     company: "Meta",
     title: "Full Stack Developer",
     salary: 80000,
+    location: "London",
     applied: true,
   },
 ];
