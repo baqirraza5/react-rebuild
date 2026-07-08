@@ -17,7 +17,7 @@ const jobs = [
     company: "Microsoft",
     title: "Data Analyst",
     salary: 59000,
-    applied: true,
+    applied: false,
     location: "London",
   },
   {
@@ -26,26 +26,37 @@ const jobs = [
     title: "Full Stack Developer",
     salary: 80000,
     location: "London",
-    applied: true,
+    applied: false,
   },
 ];
 
 function App() {
   const [showAppliedOnly, setShowAppliedOnly] = useState(false);
+  const [query, setQuery] = useState("");
 
-  const visibleJobs = showAppliedOnly
-    ? jobs.filter((job) => job.applied)
-    : jobs;
+  const q = query.toLowerCase();
+
+  const visibleJobs = jobs.filter(
+    (job) =>
+      (job.company.toLowerCase().includes(q) ||
+        job.title.toLowerCase().includes(q)) &&
+      (!showAppliedOnly || job.applied),
+  );
 
   return (
     <div className="cardList">
+      <input
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search by title or company..."
+      />
       <button onClick={() => setShowAppliedOnly(!showAppliedOnly)}>
         {showAppliedOnly ? "Show All" : "Show Applied"}
       </button>
       {visibleJobs.length !== 0 ? (
         visibleJobs.map((job) => <JobCard key={job.id} job={job} />)
       ) : (
-        <p>0 Jobs Applied</p>
+        <p>0 Jobs FOUND!!</p>
       )}
     </div>
   );
