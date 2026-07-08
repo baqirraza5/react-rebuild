@@ -2,7 +2,6 @@ import { useState } from "react";
 import JobCard from "./components/JobCard";
 
 import "./App.css";
-import Counter from "./components/Counter";
 
 const jobs = [
   {
@@ -34,15 +33,12 @@ const jobs = [
 function App() {
   const [showAppliedOnly, setShowAppliedOnly] = useState(false);
 
-  console.log("App just ran. showAppliedOnly is:", showAppliedOnly);
-
   const visibleJobs = showAppliedOnly
     ? jobs.filter((job) => job.applied)
     : jobs;
 
   return (
     <div className="cardList">
-      <Counter />
       <button onClick={() => setShowAppliedOnly(!showAppliedOnly)}>
         {showAppliedOnly ? "Show All" : "Show Applied"}
       </button>

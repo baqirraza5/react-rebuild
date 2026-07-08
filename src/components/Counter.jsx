@@ -1,13 +1,10 @@
+import { useState } from "react";
+
 function Counter() {
-  let count = 0;
-  console.log("Counter just ran. count is:", count);
+  const [count, setCount] = useState(0);
+
   return (
-    <button
-      onClick={() => {
-        count++;
-        console.log("clicked! count is now:", count);
-      }}
-    >
+    <button onClick={() => setCount(count + 1)}>
       Clicked {count} times
     </button>
   );
