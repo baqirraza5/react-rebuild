@@ -4,6 +4,7 @@ import JobCard from "./components/JobCard";
 import "./App.css";
 import GitHubCard from "./components/GitHubCard";
 import { initialJobs } from "./utils/jobs";
+import AddJobForm from "./components/AddJobForm";
 
 function App() {
   const [jobs, setJobs] = useState(initialJobs);
@@ -30,6 +31,8 @@ function App() {
       ),
     );
 
+  const addJob = (newJob) => setJobs([...jobs, newJob]);
+
   return (
     <div className="cardList">
       <input
@@ -41,6 +44,7 @@ function App() {
         {showAppliedOnly ? "Show All" : "Show Applied"}
       </button>
       <GitHubCard />
+      <AddJobForm onAdd={addJob} />
       {visibleJobs.length !== 0 ? (
         visibleJobs.map((job) => (
           <JobCard
