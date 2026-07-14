@@ -1,4 +1,4 @@
-const JobCard = ({ job }) => {
+const JobCard = ({ job, onToggleApplied }) => {
   return (
     <div className="card">
       <div className="logo" />
@@ -9,6 +9,9 @@ const JobCard = ({ job }) => {
         </p>
         <p>{job.location}</p>
       </div>
+      <button onClick={() => onToggleApplied(job.id)}>
+        {job.applied ? "Applied ✓" : "Mark applied"}
+      </button>
     </div>
   );
 };

@@ -23,6 +23,13 @@ function App() {
     document.title = `${visibleJobs.length} Jobs Found`;
   }, [visibleJobs.length]);
 
+  const toggleApplied = (id) =>
+    setJobs(
+      jobs.map((j) =>
+        j.id === id ? { ...j, applied: !j.applied } : j,
+      ),
+    );
+
   return (
     <div className="cardList">
       <input
@@ -35,7 +42,13 @@ function App() {
       </button>
       <GitHubCard />
       {visibleJobs.length !== 0 ? (
-        visibleJobs.map((job) => <JobCard key={job.id} job={job} />)
+        visibleJobs.map((job) => (
+          <JobCard
+            key={job.id}
+            job={job}
+            onToggleApplied={toggleApplied}
+          />
+        ))
       ) : (
         <p>0 Jobs FOUND!!</p>
       )}
