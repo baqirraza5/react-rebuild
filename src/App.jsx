@@ -7,7 +7,10 @@ import { initialJobs } from "./utils/jobs";
 import AddJobForm from "./components/AddJobForm";
 
 function App() {
-  const [jobs, setJobs] = useState(initialJobs);
+  const [jobs, setJobs] = useState(() => {
+    const saved = localStorage.getItem("jobs");
+    return saved ? JSON.parse(saved) : initialJobs;
+  });
   const [showAppliedOnly, setShowAppliedOnly] = useState(false);
   const [query, setQuery] = useState("");
 
@@ -23,6 +26,10 @@ function App() {
   useEffect(() => {
     document.title = `${visibleJobs.length} Jobs Found`;
   }, [visibleJobs.length]);
+
+  useEffect(() => {
+    localStorage.setItem("jobs", JSON.stringify(jobs));
+  }, [jobs]);
 
   const toggleApplied = (id) =>
     setJobs(
