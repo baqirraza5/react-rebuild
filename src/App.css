@@ -97,6 +97,12 @@
   gap: 16px;
 }
 
+.form-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
 .form-fields {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

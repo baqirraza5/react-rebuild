@@ -32,6 +32,7 @@ const AddJobForm = ({ onAdd }) => {
 
   return (
     <form onSubmit={handleSubmit} className="add-job-form">
+      <h2 className="form-title">Add a job</h2>
       <div className="form-fields">
         <input
           className={
