@@ -49,6 +49,12 @@
   text-transform: capitalize;
 }
 
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .pill:hover {
   border-color: var(--text-3);
 }
