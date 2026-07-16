@@ -87,6 +87,22 @@
   color: var(--text-2);
 }
 
+.add-job-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-l);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
 .input {
   width: 100%;
   background: var(--surface);
@@ -106,4 +122,30 @@
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-ring);
+}
+
+.input-error {
+  border-color: var(--danger);
+}
+
+.form-error {
+  margin: 0;
+  font-size: 13px;
+  color: var(--danger);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-m);
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
 }

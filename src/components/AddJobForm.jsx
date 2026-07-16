@@ -9,16 +9,18 @@ const initialJobData = {
 
 const AddJobForm = ({ onAdd }) => {
   const [job, setJob] = useState(initialJobData);
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // stop the browser's full-page reload
-    if (
-      job.title.trim() === "" ||
-      job.company.trim() === "" ||
-      job.location.trim() === "" ||
-      job.salary.trim() === ""
-    )
-      return; // validation guard 🛡
+    e.preventDefault();
+
+    if (job.title.trim() === "" || job.company.trim() === "") {
+      setError("Title and company are required.");
+      return;
+    }
+
+    setError("");
+
     onAdd({
       ...job,
       id: crypto.randomUUID(),
@@ -29,33 +31,54 @@ const AddJobForm = ({ onAdd }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        className="input"
-        value={job.title}
-        onChange={(e) => setJob({ ...job, title: e.target.value })}
-        placeholder="Job Title"
-      />
-      <input
-        className="input"
-        value={job.company}
-        onChange={(e) => setJob({ ...job, company: e.target.value })}
-        placeholder="Company"
-      />
-      <input
-        className="input"
-        value={job.salary}
-        type="number"
-        onChange={(e) => setJob({ ...job, salary: e.target.value })}
-        placeholder="Salary"
-      />
-      <input
-        className="input"
-        value={job.location}
-        onChange={(e) => setJob({ ...job, location: e.target.value })}
-        placeholder="Location"
-      />
-      <button type="submit">Add</button>
+    <form onSubmit={handleSubmit} className="add-job-form">
+      <div className="form-fields">
+        <input
+          className={
+            error && job.title.trim() === ""
+              ? "input input-error"
+              : "input"
+          }
+          value={job.title}
+          onChange={(e) => {
+            setJob({ ...job, title: e.target.value });
+            setError("");
+          }}
+          placeholder="Title *"
+        />
+        <input
+          className={
+            error && job.company.trim() === ""
+              ? "input input-error"
+              : "input"
+          }
+          value={job.company}
+          onChange={(e) => {
+            setJob({ ...job, company: e.target.value });
+            setError("");
+          }}
+          placeholder="Company *"
+        />
+        <input
+          className="input"
+          value={job.salary}
+          type="number"
+          onChange={(e) => setJob({ ...job, salary: e.target.value })}
+          placeholder="Salary"
+        />
+        <input
+          className="input"
+          value={job.location}
+          onChange={(e) =>
+            setJob({ ...job, location: e.target.value })
+          }
+          placeholder="Location"
+        />
+      </div>
+      {error && <p className="form-error">{error}</p>}
+      <button type="submit" className="btn-primary">
+        Add
+      </button>
     </form>
   );
 };
