@@ -5,6 +5,7 @@ import "./App.css";
 import GitHubCard from "./components/GitHubCard";
 import { initialJobs, STATUSES } from "./utils/jobs";
 import AddJobForm from "./components/AddJobForm";
+import Header from "./components/Header";
 
 function App() {
   const migrate = (job) =>
@@ -55,6 +56,7 @@ function App() {
 
   return (
     <div className="card-list">
+      <Header />
       <div className="stats">
         {["total", ...STATUSES].map((s) => (
           <div className="stat" key={s}>
