@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 const GitHubCard = () => {
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState();
   const [errMsg, setErrMsg] = useState("");
 
@@ -26,21 +27,31 @@ const GitHubCard = () => {
       } catch (error) {
         setErrMsg(error.message);
       }
+
+      setLoading(false);
     };
 
     fetchGitHubData();
   }, []);
 
-  if (!user) {
-    return <p>{errMsg ? errMsg : "Loading....."}</p>;
-  }
+  if (loading) return <p className="gh-loading">Loading profile…</p>;
+  if (!user) return <p className="gh-loading">{errMsg}</p>;
 
   return (
-    <div className="card">
-      <div className="info">
-        <h3>{user.name}</h3>
-        <p>Public Repos: {user.public_repos}</p>
-        <p>Followers: {user.followers}</p>
+    <div className="gh-card">
+      <div className="gh-id">
+        <p className="gh-label">GitHub</p>
+        <p className="gh-name">{user.name}</p>
+      </div>
+      <div className="gh-stats">
+        <div className="gh-stat">
+          <p className="gh-number">{user.public_repos}</p>
+          <p className="gh-caption">repos</p>
+        </div>
+        <div className="gh-stat">
+          <p className="gh-number">{user.followers}</p>
+          <p className="gh-caption">followers</p>
+        </div>
       </div>
     </div>
   );

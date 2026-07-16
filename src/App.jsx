@@ -82,7 +82,6 @@ function App() {
           ))}
         </div>
       </div>
-      <GitHubCard />
       <AddJobForm onAdd={addJob} />
       {visibleJobs.length !== 0 ? (
         visibleJobs.map((job) => (
@@ -93,8 +92,15 @@ function App() {
           />
         ))
       ) : (
-        <p>0 Jobs FOUND!!</p>
+        <div className="empty-state">
+          <p className="empty-title">No jobs match</p>
+          <p className="empty-hint">
+            Try a different search or filter, or add your first job
+            above.
+          </p>
+        </div>
       )}
+      <GitHubCard />
     </div>
   );
 }
