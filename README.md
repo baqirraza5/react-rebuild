@@ -4,7 +4,7 @@ A minimal job application tracker for managing your job hunt — search,
 filter, and move applications through a pipeline from saved to offer.
 Built as part of rebuilding my frontend skills in public.
 
-**Live demo:** https://jobtrackr-flame.vercel.app/
+**[Live demo](https://jobtrackr-flame.vercel.app/)**
 
 ![JobTrackr screenshot](docs/screenshot.png)
 
