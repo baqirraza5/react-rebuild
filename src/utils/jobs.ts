@@ -9,6 +9,21 @@ export type Job = {
   status: Status;
 };
 
+export type JobDraft = {
+  title: string;
+  company: string;
+  salary: string;
+  location: string;
+};
+
+export type GitHubUser = {
+  name: string;
+  public_repos: number;
+  followers: number;
+};
+
+export type JobCount = Record<Status, number> & { total: number };
+
 export const initialJobs: Job[] = [
   {
     id: 1,
