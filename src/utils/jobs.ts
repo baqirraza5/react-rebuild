@@ -1,4 +1,15 @@
-export const initialJobs = [
+export type Status = "saved" | "applied" | "interview" | "offer";
+
+export type Job = {
+  id: number | string;
+  title: string;
+  company: string;
+  salary: number;
+  location: string;
+  status: Status;
+};
+
+export const initialJobs: Job[] = [
   {
     id: 1,
     company: "Google",
@@ -25,4 +36,9 @@ export const initialJobs = [
   },
 ];
 
-export const STATUSES = ["saved", "applied", "interview", "offer"];
+export const STATUSES: Status[] = [
+  "saved",
+  "applied",
+  "interview",
+  "offer",
+];
